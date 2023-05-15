@@ -1,23 +1,22 @@
-import logo from './logo.svg';
+
 import './App.css';
+import { useStreak } from 'use-streak';
 
 function App() {
+
+  const today = new Date();
+  const {currentCount} = useStreak(localStorage, today)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h2>Streak Counter</h2>
+      <div>
+        <span style={{ fontSize: "3rem" }} role="img" aria-label="fire emoji">
+          🔥
+        </span>
+      </div>
+      <p style={{ fontSize: "1.5rem" }}>
+        {currentCount} day{currentCount > 1 ? "s" : ""}
+      </p>
     </div>
   );
 }
